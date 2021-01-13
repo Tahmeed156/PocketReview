@@ -23,16 +23,16 @@
 
   <h3>Archive List</h3>
 
-  <form action="/" method="post">
+  <form action="{% url 'home' %}" method="post">
     {% csrf_token  %}
 
     <input id="tag_name" type="text" name="tag_name" placeholder="tag name" value="{{ tag_name }}">
 
-    <input type="checkbox" id="random" name="random" value="random">
-    <label for="random">Random</label>
-
     <br /><br />
-    <input type="submit" value="Search">
+    <input type="submit" name="type" value="search" />
+    <input type="submit" name="type" value="refresh" />
+    <input type="submit" name="type" value="random" />
+    </form>
     
   </form>
 
