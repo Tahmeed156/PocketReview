@@ -11,6 +11,9 @@
       max-width: 500px;
       margin: auto;
     }
+    ul {
+      padding: 0
+    }
     li {
       list-style: none;
     }
@@ -22,6 +25,19 @@
   <hr />
 
   <h3>Archive List</h3>
+
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>
+        <i><mark>
+          {{ message }}
+        </mark></i>
+      </li>
+      {% endfor %}
+    </ul>
+    <br />
+  {% endif %}
 
   <form action="{% url 'home' %}" method="post">
     {% csrf_token  %}
@@ -55,5 +71,8 @@
   </ul>
   <hr />
 
+  <code>tmdfx</code>
+  <br /><br />
+  
 </body>
 </html>
