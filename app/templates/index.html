@@ -1,11 +1,59 @@
-<h2>Pocket Review</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocket Review</title>
+  <style>
+    body {
+      font-family: monospace;
+      text-align: center;
+      max-width: 500px;
+      margin: auto;
+    }
+    li {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Pocket Review</h1>
+  <hr />
 
-<h3>Archive List</h3>
+  <h3>Archive List</h3>
 
-<ul>
-  {% for i in articles %}
+  <form action="/" method="post">
+    {% csrf_token  %}
 
-  <li>{{i}}</li>
+    <input id="tag_name" type="text" name="tag_name" placeholder="tag name" value="{{ tag_name }}">
 
-  {% endfor %}
-</ul>
+    <input type="checkbox" id="random" name="random" value="random">
+    <label for="random">Random</label>
+
+    <br /><br />
+    <input type="submit" value="Search">
+    
+  </form>
+
+  <ul>
+    {% for i in articles %}
+
+    <li>
+      <a href="{{ i.given_url }}" target=”_blank”>
+        {{ i.given_title }}
+      </a>
+      <br /><br />
+      <i>{{ i.time_to_read }} mins | added {{ i.time_added }}</i>
+      <p>
+        {{ i.excerpt }}
+      </p>
+    </li>
+    <br />
+
+    {% endfor %}
+  </ul>
+  <hr />
+
+</body>
+</html>

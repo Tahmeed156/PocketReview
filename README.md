@@ -4,11 +4,12 @@ A tool to take a look at [Pocket](https://app.getpocket.com/) archive, categoriz
 
 ## Feature List
 
-- Authentication with Pocket
 - Basic list of archive items - DONE!
-- List with filters, sorting, tags, search
+- List with tag filters, article metadata - DONE!
+- Random article, filtered by tag - DONE!
+- Caching list of articles
+- Authentication with Pocket
 - Categorize via similarities (title, site, text)
-- Random article from selected category
 
 ## Tech Stack
 
