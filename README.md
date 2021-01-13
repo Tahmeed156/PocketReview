@@ -8,7 +8,7 @@ A tool to take a look at [Pocket](https://app.getpocket.com/) archive, categoriz
 - List with tag filters, article metadata - DONE!
 - Random article, filtered by tag - DONE!
 - Caching list of articles, by user & tag - DONE!
-- Authentication with Pocket
+- Authentication with Pocket - DONE!
 - Categorize via similarities (title, site, text)
 
 ## Tech Stack
