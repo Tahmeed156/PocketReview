@@ -25,6 +25,7 @@ def index(request):
     refresh(request.session.get('token'), tag_name)
     messages.info(request, 'article list has been updated!')
   elif request.POST.get('type') == 'logout':
+    request.session.flush()
     return redirect('auth-user')
   else:
     pass
@@ -80,7 +81,7 @@ def random(request, tag_name=''):
 
 def auth_user(request):
   
-  if os.environ.get('DJANGO_DEBUG'):
+  if os.environ.get('DJANGO_DEBUG', 0) == 1:
     redirect_uri = 'http://localhost:8000/auth/app/'
   else:
     redirect_uri = 'https://pocket-review.herokuapp.com/auth/app/'
