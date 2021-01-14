@@ -2,7 +2,6 @@ import os
 from random import choice, sample
 import requests
 import datetime 
-from functools import lru_cache
 
 from django.shortcuts import render, redirect
 from django.core.cache import cache
@@ -64,7 +63,7 @@ def random(request, tag_name=''):
 
   if request.session.get('token') is None:
     return redirect('auth-user')
-    
+
   key_name = request.session.get('token') + '$' + tag_name
 
   if cache.get(key_name):
@@ -81,7 +80,11 @@ def random(request, tag_name=''):
 
 def auth_user(request):
   
-  redirect_uri = 'http://localhost:8000/auth/app/'
+  if os.environ.get('DJANGO_DEBUG'):
+    redirect_uri = 'http://localhost:8000/auth/app/'
+  else:
+    redirect_uri = 'https://pocket-review.herokuapp.com/auth/app/'
+
   request_token_link = f"https://getpocket.com/v3/oauth/request?consumer_key={os.environ.get('CONSUMER_KEY')}&redirect_uri={redirect_uri}"
   response = requests.get(request_token_link)
   
